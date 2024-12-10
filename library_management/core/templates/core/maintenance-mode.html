@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Housekeeping</h3>
+<p>Number of expired memberships removed: {{ expired_count }}</p>
+<p>Number of old transactions archived: {{ archived_count }}</p>
+<a href="{% url 'admin_dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+{% endblock %}

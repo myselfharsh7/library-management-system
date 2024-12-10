@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Overdue Books Report</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Book</th>
+            <th>Overdue Days</th>
+            <th>Fine</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in overdue_transactions %}
+        <tr>
+            <td>{{ transaction.user.username }}</td>
+            <td>{{ transaction.book.title }}</td>
+            <td>{{ transaction.overdue_days }}</td>
+            <td>${{ transaction.fine }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

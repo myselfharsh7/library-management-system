@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Manage Transactions</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Book</th>
+            <th>Status</th>
+            <th>Fine</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.user.username }}</td>
+            <td>{{ transaction.book.title }}</td>
+            <td>{{ transaction.status }}</td>
+            <td>${{ transaction.fine }}</td>
+            <td>
+                {% if transaction.status == "REQUESTED" %}
+                <a href="{% url 'approve_request' transaction.id %}" class="btn btn-sm btn-success">Approve</a>
+                {% endif %}
+                {% if transaction.status == "APPROVED" %}
+                <a href="{% url 'return_book' transaction.id %}" class="btn btn-sm btn-warning">Return</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
