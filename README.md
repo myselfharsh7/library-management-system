@@ -129,7 +129,7 @@ User Workflow
 
 ## 📂 **Folder Structure**
 
-library-management-system/
+'''library-management-system/
 ├── core/
 │   ├── migrations/
 │   ├── templates/
@@ -144,11 +144,12 @@ library-management-system/
 ├── db.sqlite3
 ├── manage.py
 ├── requirements.txt
-└── README.md
+└── README.md'''
 
+## **📬 Contact**
 
-### **Contact**
-Name: Harsh Kumar Gupta
-GitHub: myselfharsh7
-Email: kumadii7@gmail.com
-linkedin : https://www.linkedin.com/in/harsh-kumar-gupta-4a624318b/
+- **Name**: Harsh Kumar Gupta  
+- **GitHub**: [myselfharsh7](https://github.com/myselfharsh7)  
+- **Email**: [kumadii7@gmail.com](mailto:kumadii7@gmail.com)  
+- **LinkedIn**: [Harsh Kumar Gupta](https://www.linkedin.com/in/harsh-kumar-gupta-4a624318b/)
+
