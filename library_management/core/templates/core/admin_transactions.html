@@ -1,34 +1,79 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Manage Transactions</h3>
-<table class="table">
-    <thead>
-        <tr>
-            <th>User</th>
-            <th>Book</th>
-            <th>Status</th>
-            <th>Fine</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for transaction in transactions %}
-        <tr>
-            <td>{{ transaction.user.username }}</td>
-            <td>{{ transaction.book.title }}</td>
-            <td>{{ transaction.status }}</td>
-            <td>${{ transaction.fine }}</td>
-            <td>
-                {% if transaction.status == "REQUESTED" %}
-                <a href="{% url 'approve_request' transaction.id %}" class="btn btn-sm btn-success">Approve</a>
-                {% endif %}
-                {% if transaction.status == "APPROVED" %}
-                <a href="{% url 'return_book' transaction.id %}" class="btn btn-sm btn-warning">Return</a>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="container my-4">
+    <h3 class="text-center mb-4">Manage Transactions</h3>
+    <p class="text-muted text-center">Review and manage user transactions. Approve requests, process returns, and handle fines.</p>
+
+    <!-- Search and Filter Section -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <form method="GET" action="{% url 'admin_transactions' %}">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search by user or book">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 text-end">
+            <select class="form-select w-auto d-inline" onchange="location = this.value;">
+                <option value="?status=all" {% if selected_status == "all" %}selected{% endif %}>All</option>
+                <option value="?status=REQUESTED" {% if selected_status == "REQUESTED" %}selected{% endif %}>Requested</option>
+                <option value="?status=APPROVED" {% if selected_status == "APPROVED" %}selected{% endif %}>Approved</option>
+                <option value="?status=RETURNED" {% if selected_status == "RETURNED" %}selected{% endif %}>Returned</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Transactions Table -->
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>User</th>
+                <th>Book</th>
+                <th>Status</th>
+                <th>Fine</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction.user.username }}</td>
+                <td>{{ transaction.book.title }}</td>
+                <td>
+                    {% if transaction.status == "REQUESTED" %}
+                    <span class="badge bg-warning">Requested</span>
+                    {% elif transaction.status == "APPROVED" %}
+                    <span class="badge bg-success">Approved</span>
+                    {% elif transaction.status == "RETURNED" %}
+                    <span class="badge bg-secondary">Returned</span>
+                    {% endif %}
+                </td>
+                <td>${{ transaction.fine }}</td>
+                <td>
+                    {% if transaction.status == "REQUESTED" %}
+                    <a href="{% url 'approve_request' transaction.id %}" 
+                       class="btn btn-sm btn-success" 
+                       onclick="return confirm('Are you sure you want to approve this request?');">
+                       Approve
+                    </a>
+                    {% endif %}
+                    {% if transaction.status == "APPROVED" %}
+                    <a href="{% url 'return_book' transaction.id %}" 
+                       class="btn btn-sm btn-warning" 
+                       onclick="return confirm('Are you sure this book has been returned?');">
+                       Return
+                    </a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No transactions found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

@@ -1,11 +1,67 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>User Dashboard</h1>
-<p>Welcome, {{ request.user.username }}!</p>
-<ul>
-    <li><a href="{% url 'book_list' %}">View Available Books</a></li>
-    <li><a href="#">My Issued Books</a></li>
-    <li><a href="#">Pay Fines</a></li>
-</ul>
+<div class="container my-5">
+    <h1 class="text-center mb-4">Welcome to Your Dashboard, {{ request.user.username }}!</h1>
+    <p class="text-center text-muted">Manage your library activities, track issued books, and settle fines.</p>
+
+    <div class="row text-center">
+        <!-- View Available Books -->
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <i class="bi bi-book h1 text-primary"></i>
+                    <h5 class="card-title mt-2">Available Books</h5>
+                    <p class="card-text">Browse and request books from the library collection.</p>
+                    <a href="{% url 'book_list' %}" class="btn btn-primary w-100">Browse Books</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Issued Books -->
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <i class="bi bi-journal h1 text-success"></i>
+                    <h5 class="card-title mt-2">My Issued Books</h5>
+                    <p class="card-text">View details of the books you currently have issued.</p>
+                    <a href="{% url 'my_issued_books' %}" class="btn btn-success w-100">View Issued Books</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pay Fines -->
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <i class="bi bi-currency-dollar h1 text-danger"></i>
+                    <h5 class="card-title mt-2">Pay Fines</h5>
+                    <p class="card-text">
+                        Check and settle any fines associated with your account.
+                        {% if total_fine > 0 %}
+                        <br><strong>Total Fine:</strong> ${{ total_fine }}
+                        {% else %}
+                        <br>No fines pending!
+                        {% endif %}
+                    </p>
+                    <a href="{% url 'pay_fines' %}" class="btn btn-danger w-100">Pay Fines</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Row for Future Features -->
+    <div class="row text-center mt-4">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <i class="bi bi-calendar h1 text-info"></i>
+                    <h5 class="card-title mt-2">Reading History</h5>
+                    <p class="card-text">Explore your past issued books and transactions.</p>
+                    <a href="#" class="btn btn-info w-100">Coming Soon</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

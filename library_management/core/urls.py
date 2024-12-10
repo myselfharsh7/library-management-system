@@ -35,12 +35,17 @@ urlpatterns = [
     path("transactions/pay-fine/<int:transaction_id>/", views.pay_fine, name="pay_fine"),
     path("reports/overdue-books/", views.overdue_books_report, name="overdue_books_report"),
     path("reports/active-issues/", views.active_issues_report, name="active_issues_report"),
-    path("reports/user-activity/<int:user_id>/", views.user_activity_report, name="user_activity_report"),
+    path("reports/user-activity/", views.user_activity_report, name="user_activity_report"),  # Default view with no user selected
+    path("reports/user-activity/<int:user_id>/", views.user_activity_report, name="user_activity_report_with_user"),
     path("reports/most-issued-books/", views.most_issued_books_chart, name="most_issued_books_chart"),
     path("maintenance/mode/", views.housekeeping, name="housekeeping"),
     path("maintenance/memberships/", views.manage_memberships, name="manage_memberships"),
-
+    path("maintenance/memberships/add/", views.add_membership, name="add_membership"),
+    path("user/issued-books/", views.my_issued_books, name="my_issued_books"),
+    path("user/pay-fines/", views.pay_fines, name="pay_fines"),
 ]
+
+
 
 
 # Add API routes separately

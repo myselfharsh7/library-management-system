@@ -1,8 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Housekeeping</h3>
-<p>Number of expired memberships removed: {{ expired_count }}</p>
-<p>Number of old transactions archived: {{ archived_count }}</p>
-<a href="{% url 'admin_dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+<div class="container my-5">
+    <h3 class="text-center mb-4">Maintenance Mode Summary</h3>
+    <p class="text-center text-muted">Here is a summary of the maintenance tasks performed.</p>
+
+    <div class="row justify-content-center">
+        <!-- Expired Memberships -->
+        <div class="col-md-4">
+            <div class="card shadow mb-3">
+                <div class="card-body">
+                    <h5 class="card-title text-center text-danger">Expired Memberships</h5>
+                    <p class="card-text text-center">
+                        Number of expired memberships removed: <strong>{{ expired_count }}</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archived Transactions -->
+        <div class="col-md-4">
+            <div class="card shadow mb-3">
+                <div class="card-body">
+                    <h5 class="card-title text-center text-warning">Archived Transactions</h5>
+                    <p class="card-text text-center">
+                        Number of old transactions archived: <strong>{{ archived_count }}</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Dashboard -->
+    <div class="text-center mt-4">
+        <a href="{% url 'admin_dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+    </div>
+</div>
 {% endblock %}

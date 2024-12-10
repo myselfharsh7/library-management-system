@@ -1,30 +1,54 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Manage Memberships</h3>
-<a href="{% url 'add_membership' %}" class="btn btn-primary">Add Membership</a>
-<table class="table mt-3">
-    <thead>
-        <tr>
-            <th>User</th>
-            <th>Membership Type</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for membership in memberships %}
-        <tr>
-            <td>{{ membership.user.username }}</td>
-            <td>{{ membership.membership_type }}</td>
-            <td>{{ membership.start_date }}</td>
-            <td>{{ membership.end_date }}</td>
-            <td>
-                <a href="{% url 'update_membership' membership.id %}" class="btn btn-sm btn-warning">Edit</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="container my-4">
+    <h3 class="text-center mb-4">Manage Memberships</h3>
+
+    <!-- Add Membership Button -->
+    <div class="text-end mb-3">
+        <a href="{% url 'add_membership' %}" class="btn btn-primary">Add Membership</a>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <form method="GET" action="{% url 'manage_memberships' %}">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search by username or membership type">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Memberships Table -->
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>User</th>
+                <th>Membership Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for membership in memberships %}
+            <tr>
+                <td>{{ membership.user.username }}</td>
+                <td>{{ membership.membership_type }}</td>
+                <td>{{ membership.start_date }}</td>
+                <td>{{ membership.end_date }}</td>
+                <td>
+                    <a href="{% url 'update_membership' membership.id %}" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No memberships found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
