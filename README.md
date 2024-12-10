@@ -129,7 +129,7 @@ User Workflow
 
 ## 📂 **Folder Structure**
 
-'''library-management-system/
+``` library-management-system/
 ├── core/
 │   ├── migrations/
 │   ├── templates/
@@ -144,7 +144,8 @@ User Workflow
 ├── db.sqlite3
 ├── manage.py
 ├── requirements.txt
-└── README.md'''
+└── README.md
+```
 
 ## **📬 Contact**
 
