@@ -128,8 +128,8 @@ User Workflow
         View transactions and pay fines.
 
 ## 📂 **Folder Structure**
-
-``` library-management-system/
+```
+ library-management-system/
 ├── core/
 │   ├── migrations/
 │   ├── templates/
