@@ -1,12 +1,14 @@
-# **Library Management System**
+# 🌟 **Library Management System** 🌟
+
+![Library Animation](https://media.giphy.com/media/3o7abldj0b3rxrZUxW/giphy.gif)
 
 ### A full-stack web application for managing a library's resources and operations efficiently.
 
 ---
 
-## **Features**
+## **✨ Features**
 
-### 1. **Authentication**
+### 1. **🔐 Authentication**
 - **Admin Login**:
   - Admin credentials for managing library resources.
   - Accessible via the admin login page.
@@ -14,25 +16,33 @@
   - User credentials for browsing and interacting with the library.
   - Accessible via the user login page.
 
-### 2. **Admin Dashboard**
+---
+
+### 2. **📊 Admin Dashboard**
 - Access to the following functionalities:
   - **Reports**: Generate insights into library resources and activity.
   - **Transactions**: Manage book issues, returns, and fines.
   - **Maintenance**: Perform system housekeeping tasks.
   - **Books Management**: Add, update, or delete records.
 
-### 3. **User Dashboard**
+---
+
+### 3. **🛠 User Dashboard**
 - Access to:
   - **Book Listings**: Browse available books.
   - **Transactions**: Request book issues, return books, and pay fines.
   - **Membership Status**: View current membership details.
 
-### 4. **Transactions**
+---
+
+### 4. **📚 Transactions**
 - **Book Issue**: Users request books, and admins approve or reject them.
 - **Return Book**: Users return books, with overdue fines calculated.
 - **Pay Fine**: Users can pay overdue fines.
 
-### 5. **Reports**
+---
+
+### 5. **📈 Reports**
 - **Master Lists**:
   - Books
   - Memberships
@@ -40,7 +50,9 @@
   - Active Issues
   - Overdue Returns
 
-### 6. **Maintenance Module**
+---
+
+### 6. **🧹 Maintenance Module**
 - **Housekeeping**:
   - Clean expired memberships.
   - Archive old transactions.
@@ -51,29 +63,30 @@
 
 ---
 
-## **Tech Stack**
+## **🛠 Tech Stack**
 
-### **Backend:**
+### **Backend**:
 - Python (Django Framework)
 - Django REST Framework
 
-### **Frontend:**
+### **Frontend**:
 - HTML/CSS
 - Bootstrap
 
-### **Database:**
+### **Database**:
 - SQLite
 
 ---
 
-## **Installation**
+## **⚙️ Installation**
 
 ### **Step 1: Clone the Repository**
 
 git clone https://github.com/myselfharsh7/library-management-system.git
 cd library-management-system
 
-### ** Step 2: Set Up a Virtual Environment**
+
+### **Step 2: Set Up a Virtual Environment**
 
 python3 -m venv env
 source env/bin/activate  # Linux/Mac
@@ -114,7 +127,7 @@ User Workflow
         Request book issues.
         View transactions and pay fines.
 
-### **Folder Structure**
+## 📂 **Folder Structure**
 
 library-management-system/
 ├── core/
@@ -133,10 +146,9 @@ library-management-system/
 ├── requirements.txt
 └── README.md
 
+
 ### **Contact**
 Name: Harsh Kumar Gupta
-
 GitHub: myselfharsh7
 Email: kumadii7@gmail.com
-
 linkedin : https://www.linkedin.com/in/harsh-kumar-gupta-4a624318b/
