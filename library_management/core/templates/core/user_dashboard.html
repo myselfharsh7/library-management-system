@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>User Dashboard</h1>
+<p>Welcome, {{ request.user.username }}!</p>
+<ul>
+    <li><a href="{% url 'book_list' %}">View Available Books</a></li>
+    <li><a href="#">My Issued Books</a></li>
+    <li><a href="#">Pay Fines</a></li>
+</ul>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>User Details: {{ user.username }}</h3>
+<p>Email: {{ user.email }}</p>
+<p>Role: {% if user.is_admin %}Admin{% else %}Member{% endif %}</p>
+{% if membership %}
+<p>Membership: {{ membership.membership_type }}</p>
+<p>Start Date: {{ membership.start_date }}</p>
+<p>End Date: {{ membership.end_date }}</p>
+{% else %}
+<p>No membership assigned.</p>
+{% endif %}
+{% endblock %}

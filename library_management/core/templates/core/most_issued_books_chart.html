@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Most Issued Books</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Issue Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stat in book_stats %}
+        <tr>
+            <td>{{ stat.book__title }}</td>
+            <td>{{ stat.issue_count }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

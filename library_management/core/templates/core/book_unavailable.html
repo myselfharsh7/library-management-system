@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Book Unavailable</h3>
+<p>Sorry, this book is currently unavailable for issue.</p>
+<a href="{% url 'book_list' %}" class="btn btn-primary">Back to Books</a>
+{% endblock %}
