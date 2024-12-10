@@ -1,6 +1,6 @@
 # 🌟 **Library Management System** 🌟
 
-![Library Animation]([https://media.giphy.com/media/3o7abldj0b3rxrZUxW/giphy.gif](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXB0aG4yZmM3NDZibndwdmR6bXg3YjNqM29jZnJiem81MDljeHVhayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fXnx6vSSrzY92rTONJ/giphy.gif))
+![Library Animation](https://media.giphy.com/media/3o7abldj0b3rxrZUxW/giphy.gif](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXB0aG4yZmM3NDZibndwdmR6bXg3YjNqM29jZnJiem81MDljeHVhayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fXnx6vSSrzY92rTONJ/giphy.gif)
 
 ### A full-stack web application for managing a library's resources and operations efficiently.
 
