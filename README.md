@@ -73,30 +73,30 @@
 git clone https://github.com/myselfharsh7/library-management-system.git
 cd library-management-system
 
-### ** Step 2: Set Up a Virtual Environment
+### ** Step 2: Set Up a Virtual Environment**
 
 python3 -m venv env
 source env/bin/activate  # Linux/Mac
 env\Scripts\activate  # Windows
 
-### **Step 3: Install Dependencies
+### **Step 3: Install Dependencies**
 
 pip install -r requirements.txt
 
-### **Step 4: Apply Migrations
+### **Step 4: Apply Migrations**
 
 python manage.py makemigrations
 python manage.py migrate
 
-### **Step 5: Create a Superuser
+### **Step 5: Create a Superuser**
 
 python manage.py createsuperuser
 
-### **Step 6: Run the Server
+### **Step 6: Run the Server**
 
 python manage.py runserver
 
-### **Usage
+### **Usage**
 Admin Workflow
 
     Login: Use admin credentials.
@@ -114,7 +114,7 @@ User Workflow
         Request book issues.
         View transactions and pay fines.
 
-### **Folder Structure
+### **Folder Structure**
 
 library-management-system/
 ├── core/
@@ -133,8 +133,10 @@ library-management-system/
 ├── requirements.txt
 └── README.md
 
-### **Contact
+### **Contact**
 Name: Harsh Kumar Gupta
+
 GitHub: myselfharsh7
 Email: kumadii7@gmail.com
+
 linkedin : https://www.linkedin.com/in/harsh-kumar-gupta-4a624318b/
