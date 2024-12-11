@@ -254,18 +254,35 @@ def approve_request(request, transaction_id):
 
 
 
+from django.utils.timezone import now
+
 @login_required
 def return_book(request, transaction_id):
+    # Get the transaction
     transaction = get_object_or_404(Transaction, id=transaction_id)
+
+    # Check if the transaction belongs to the logged-in user
+    if transaction.user != request.user and not request.user.is_admin:
+        return HttpResponseForbidden("You are not allowed to return this book.")
+
+    # Ensure the transaction is in the APPROVED state
+    if transaction.status != "APPROVED":
+        messages.error(request, "This book is not currently issued.")
+        return redirect("user_dashboard")
+
+    # Mark the transaction as RETURNED and update return date
     transaction.status = "RETURNED"
-    transaction.return_date = date.today()
-    overdue_days = (transaction.return_date - transaction.issue_date).days - 14  # 14-day loan period
-    if overdue_days > 0:
-        transaction.calculate_fine(overdue_days)
+    transaction.return_date = now()
+
+    # Update book's available copies
     transaction.book.copies_available += 1
     transaction.book.save()
     transaction.save()
-    return redirect("user_dashboard")
+
+    # Notify user/admin
+    messages.success(request, f'The book "{transaction.book.title}" has been successfully returned.')
+    return redirect("user_dashboard" if not request.user.is_admin else "admin_transactions")
+
 
 
 @login_required

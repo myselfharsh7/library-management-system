@@ -21,10 +21,16 @@
                 <td>
                     {% if transaction.status == "APPROVED" %}
                     <span class="badge bg-success">Approved</span>
+                   
                     {% elif transaction.status == "RETURNED" %}
                     <span class="badge bg-secondary">Returned</span>
                     {% else %}
                     <span class="badge bg-danger">Unknown</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if transaction.status == "APPROVED" %}
+                    <a href="{% url 'return_book' transaction.id %}" class="btn btn-sm btn-warning">Return</a>
                     {% endif %}
                 </td>
             </tr>

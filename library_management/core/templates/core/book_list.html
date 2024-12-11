@@ -58,6 +58,8 @@
                     {% else %}
                     <span class="text-danger">Unavailable</span>
                     {% endif %}
+                    {% if transaction.status == "REQUESTED" %}
+                    
                 </td>
                 {% endif %}
             </tr>
