@@ -35,7 +35,7 @@ class Membership(models.Model):
 class Transaction(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    issue_date = models.DateField()
+    issue_date = models.DateField(null=True, blank=True)
     return_date = models.DateField(null=True, blank=True)
     fine = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     status = models.CharField(

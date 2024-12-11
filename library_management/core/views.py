@@ -11,7 +11,7 @@ from datetime import date, timedelta
 from django.db.models import Count
 from django.db.models import Q
 from django.utils.timezone import now
-
+from django.contrib import messages
 
 class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
@@ -184,16 +184,21 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Transaction, Book
 from django.contrib.auth.decorators import login_required
 
+
 @login_required
 def request_book(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     if book.copies_available <= 0:
-        return render(request, "core/book_unavailable.html")
-    Transaction.objects.create(user=request.user, book=book)
+        return render(request, "core/book_unavailable.html", {"book": book})
+
+    # Create a new transaction with status "REQUESTED"
+    Transaction.objects.create(user=request.user, book=book, status="REQUESTED", issue_date=None)
+
+    # Provide feedback and redirect
+    messages.success(request, f'Your request for "{book.title}" has been placed successfully.')
     return redirect("user_dashboard")
 
 
-@login_required
 @login_required
 def admin_transactions(request):
     if not request.user.is_admin:
@@ -227,12 +232,26 @@ def admin_transactions(request):
 def approve_request(request, transaction_id):
     if not request.user.is_admin:
         return HttpResponseForbidden("Only admins can approve requests.")
+    
     transaction = get_object_or_404(Transaction, id=transaction_id)
+
+    if transaction.status != "REQUESTED":
+        messages.error(request, "This transaction is no longer pending approval.")
+        return redirect("admin_transactions")
+
+    if transaction.book.copies_available <= 0:
+        messages.error(request, f'The book "{transaction.book.title}" is no longer available.')
+        return redirect("admin_transactions")
+
     transaction.status = "APPROVED"
+    transaction.issue_date = date.today()  # Set issue_date when approving
     transaction.book.copies_available -= 1
     transaction.book.save()
     transaction.save()
+
+    messages.success(request, f'The request for "{transaction.book.title}" has been approved successfully.')
     return redirect("admin_transactions")
+
 
 
 @login_required
