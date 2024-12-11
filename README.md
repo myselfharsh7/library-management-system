@@ -112,6 +112,8 @@ python manage.py createsuperuser
 
 python manage.py runserver
 
+![image](https://github.com/user-attachments/assets/90d75164-ffb9-44e9-bae8-a358d9ad58fa)
+
 ### **Usage**
 Admin Workflow
 
