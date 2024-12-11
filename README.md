@@ -112,7 +112,14 @@ python manage.py createsuperuser
 
 python manage.py runserver
 
+### **OUTPUT SCREENSHOT**
+
 ![image](https://github.com/user-attachments/assets/90d75164-ffb9-44e9-bae8-a358d9ad58fa)
+![image](https://github.com/user-attachments/assets/c533177b-a613-4175-b8bf-e7559bc1ee75)
+![image](https://github.com/user-attachments/assets/1a5b4768-3227-44d5-97ba-c542d51b0b45)
+
+
+
 
 ### **Usage**
 Admin Workflow
